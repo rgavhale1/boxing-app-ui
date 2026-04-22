@@ -8,6 +8,12 @@ const Programs = () => {
   return (
     <>
       <section className="programs">
+        
+        {/* ✅ COMMON HEADING */}
+        <h2 className="programs-heading">
+          FIND THE SESSION BUILT FOR YOU
+        </h2>
+
         <div className="card">
           <h3>🥊 Boxing</h3>
           <button onClick={() => { setSelectedProgram("Boxing"); setOpen(true); }}>
@@ -26,9 +32,9 @@ const Programs = () => {
           <h3>🤼 Wrestling</h3>
           <button disabled>Coming Soon</button>
         </div>
+
       </section>
 
-      {/* POPUP */}
       {open && <JoinModal close={() => setOpen(false)} program={selectedProgram} />}
     </>
   );

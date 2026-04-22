@@ -12,7 +12,7 @@ const Hero = () => {
       <div className="hero-overlay"></div>
 
       {/* 📝 content */}
-      <h1>FIND THE SESSION BUILT FOR YOU</h1>
+      {/* Removed the <h1> element */}
     </section>
   );
 };
