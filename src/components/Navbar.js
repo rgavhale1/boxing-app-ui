@@ -1,11 +1,24 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-
-  // 🔐 get role
+  const location = useLocation();
   const role = localStorage.getItem("role");
+
+  const goToSection = (id) => {
+    if (location.pathname !== "/") {
+      // First go to home route
+      navigate("/", { replace: false });
+      // Delay scroll until after navigation
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      // Already on home, just scroll
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -14,35 +27,28 @@ const Navbar = () => {
       </div>
 
       <ul>
-        {/* 👇 Show only for USER */}
         {role !== "ADMIN" && (
           <>
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Services</li>
+            <li onClick={() => goToSection("home")}>Home</li>
+            <li onClick={() => goToSection("about")}>About Us</li>
+            <li onClick={() => goToSection("programs")}>Services</li>
           </>
         )}
 
-        {/* 👇 Admin button */}
-        {role === "ADMIN" ? (
-          <li>
-            <button
-              className="join-btn"
-              onClick={() => navigate("/admin")}
-            >
-              Admin Dashboard
-            </button>
-          </li>
-        ) : (
-          <li>
-            <button
-              className="join-btn"
-              onClick={() => navigate("/login")}
-            >
-              Admin
-            </button>
-          </li>
-        )}
+        <li>
+          <button
+            className="join-btn"
+            onClick={() => {
+              if (role === "ADMIN") {
+                navigate("/admin");
+              } else {
+                navigate("/login");
+              }
+            }}
+          >
+            {role === "ADMIN" ? "Admin Dashboard" : "Admin"}
+          </button>
+        </li>
       </ul>
     </nav>
   );

@@ -7,7 +7,7 @@ const Programs = () => {
 
   return (
     <>
-      <section className="programs">
+      <section className="programs" id="programs">
         
         {/* ✅ COMMON HEADING */}
         <h2 className="programs-heading">

@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <section className="about">
+    <section className="about" id="about">
       <h2>ABOUT US</h2>
       <p>
         At Boxing Avenue, we believe true fitness goes beyond just physical

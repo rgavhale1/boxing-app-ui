@@ -58,22 +58,40 @@ const AdminDashboard = () => {
   const handleChange = (e) =>
     setFilters({ ...filters, [e.target.name]: e.target.value });
 
-  const handleSearch = () => fetchUsers(0);
+  const handleSearch = () => {
+    fetchUsers(0);
+  };
+
+  const handleReset = () => {
+    const clearedFilters = {
+      name: "",
+      mobile: "",
+      email: "",
+      time: "",
+      program: "",
+      registeredDate: "",
+    };
+
+    setFilters(clearedFilters);
+
+    setTimeout(() => {
+      fetchUsers(0);
+    }, 0);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
-  
-const formatDate = (d) => {
-  if (!d) return "-";
-  const date = new Date(d);
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const year = date.getFullYear();
-  return `${day}-${month}-${year}`;
-};
 
+  const formatDate = (d) => {
+    if (!d) return "-";
+    const date = new Date(d);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
 
   return (
     <div style={styles.page}>
@@ -81,25 +99,37 @@ const formatDate = (d) => {
       {/* HEADER */}
       <div style={styles.header}>
         <h2>🏋️ Admin Dashboard</h2>
-        <button onClick={handleLogout} style={styles.logoutBtn}>
-          Logout
-        </button>
+
+        <div style={styles.headerRight}>
+          <button onClick={handleLogout} style={styles.logoutBtn}>
+            Logout
+          </button>
+        </div>
       </div>
 
       {/* FILTERS */}
       <div style={styles.card}>
         <div style={styles.filterGrid}>
-          <input name="name" placeholder="Name" onChange={handleChange} style={styles.input} />
-          <input name="mobile" placeholder="Mobile" onChange={handleChange} style={styles.input} />
-          <input name="email" placeholder="Email" onChange={handleChange} style={styles.input} />
-          <input name="time" placeholder="Time" onChange={handleChange} style={styles.input} />
-          <input name="program" placeholder="Program" onChange={handleChange} style={styles.input} />
-          <input type="date" name="registeredDate" onChange={handleChange} style={styles.input} />
+
+          <input name="name" placeholder="Name" value={filters.name} onChange={handleChange} style={styles.input} />
+          <input name="mobile" placeholder="Mobile" value={filters.mobile} onChange={handleChange} style={styles.input} />
+          <input name="email" placeholder="Email" value={filters.email} onChange={handleChange} style={styles.input} />
+          <input name="time" placeholder="Time" value={filters.time} onChange={handleChange} style={styles.input} />
+          <input name="program" placeholder="Program" value={filters.program} onChange={handleChange} style={styles.input} />
+          <input type="date" name="registeredDate" value={filters.registeredDate} onChange={handleChange} style={styles.input} />
+
         </div>
 
-        <button onClick={handleSearch} style={styles.searchBtn}>
-          Search
-        </button>
+        {/* SEARCH + RESET */}
+        <div style={styles.buttonRow}>
+          <button onClick={handleSearch} style={styles.searchBtn}>
+            Search
+          </button>
+
+          <button onClick={handleReset} style={styles.resetBtn}>
+            Reset
+          </button>
+        </div>
       </div>
 
       {/* TABLE */}
@@ -140,10 +170,7 @@ const formatDate = (d) => {
 
         {/* PAGINATION */}
         <div style={styles.pagination}>
-          <button
-            disabled={page === 0}
-            onClick={() => fetchUsers(page - 1)}
-          >
+          <button disabled={page === 0} onClick={() => fetchUsers(page - 1)}>
             Prev
           </button>
 
@@ -177,6 +204,12 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     marginBottom: "20px",
+    alignItems: "center",
+  },
+
+  headerRight: {
+    display: "flex",
+    alignItems: "center",
   },
 
   logoutBtn: {
@@ -203,6 +236,12 @@ const styles = {
     marginBottom: "10px",
   },
 
+  buttonRow: {
+    display: "flex",
+    gap: "10px",
+    marginTop: "10px",
+  },
+
   input: {
     padding: "10px",
     borderRadius: "8px",
@@ -210,6 +249,15 @@ const styles = {
   },
 
   searchBtn: {
+    background: "#111827",
+    color: "#fff",
+    padding: "10px 14px",
+    borderRadius: "8px",
+    border: "none",
+    cursor: "pointer",
+  },
+
+  resetBtn: {
     background: "#111827",
     color: "#fff",
     padding: "10px 14px",

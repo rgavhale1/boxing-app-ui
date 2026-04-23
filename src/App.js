@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -24,18 +24,30 @@ function Home() {
   );
 }
 
+// 👇 wrapper to control navbar visibility
+function Layout() {
+  const location = useLocation();
+
+  const hideNavbar = location.pathname === "/admin";
+
+  return (
+    <>
+      {!hideNavbar && <Navbar />}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Routes>
+    </>
+  );
+}
+
 function App() {
   return (
     <Router>
       <div className="app">
-        <Navbar />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-        </Routes>
-
+        <Layout />
       </div>
     </Router>
   );
