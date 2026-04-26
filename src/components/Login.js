@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ForgotPasswordModal from "./ForgotPasswordModal"; // import modal
 import "./Login.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -15,16 +17,14 @@ const Login = () => {
         body: JSON.stringify({ username, password }),
       });
 
-      // 🔥 backend returns STRING token
       const token = await res.text();
 
       if (res.ok && token) {
-        localStorage.setItem("token", token);  // store JWT token
-        navigate("/admin");                    // go to dashboard
+        localStorage.setItem("token", token);
+        navigate("/admin");
       } else {
         alert("Invalid credentials");
       }
-
     } catch (err) {
       console.error(err);
       alert("Server error");
@@ -52,11 +52,10 @@ const Login = () => {
         <button onClick={handleLogin}>Login</button>
 
         <div className="login-footer">
-          <span onClick={() => alert("Reset link sent!")}>
-            Forgot Password?
-          </span>
+          <span onClick={() => setShowModal(true)}>Forgot Password?</span>
         </div>
       </div>
+      {showModal && <ForgotPasswordModal onClose={() => setShowModal(false)} />}
     </div>
   );
 };

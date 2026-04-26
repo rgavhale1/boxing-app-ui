@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <section className="hero">
+    <section className="hero" id="home">
       {/* 🎥 background video */}
       <video autoPlay muted loop playsInline className="hero-video">
         <source src="/boxing.mp4" type="video/mp4" />
@@ -16,5 +16,4 @@ const Hero = () => {
     </section>
   );
 };
-
 export default Hero;

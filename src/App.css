@@ -463,3 +463,78 @@ body {
   }
 }
 
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    flex-direction: column;
+    padding: 12px 20px;
+  }
+
+ @media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: row;   /* keep horizontal */
+    flex-wrap: wrap;       /* allow wrapping if too many items */
+    justify-content: center;
+    gap: 15px;
+  }
+}
+  .logo img {
+    height: 60px; /* smaller logo */
+  }
+
+  .join-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  /* Hero */
+  .hero {
+    height: 40vh; /* reduce height */
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+
+  /* About section */
+  .about h2 {
+    font-size: 1.8rem;
+  }
+
+  .about p {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0 10px;
+  }
+
+  /* Programs cards */
+  .programs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%; /* full width on mobile */
+  }
+
+  /* Program details grid */
+  .programs-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .program-card {
+    width: 90%;
+  }
+
+  /* Footer */
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+}
+
+
