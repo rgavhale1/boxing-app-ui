@@ -14,7 +14,7 @@ const ResetPasswordPage = ({ token }) => {
     try {
       // Send token and newPassword as query parameters
       const res = await fetch(
-        `http://localhost:8080/api/auth/reset-password?token=${encodeURIComponent(token)}&newPassword=${encodeURIComponent(password)}`,
+        `https://boxing-app-management.onrender.com/api/auth/reset-password?token=${encodeURIComponent(token)}&newPassword=${encodeURIComponent(password)}`,
         {
           method: "POST"
         }

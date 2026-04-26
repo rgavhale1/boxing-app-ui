@@ -8,7 +8,7 @@ const ForgotPasswordModal = ({ onClose }) => {
   const handleSubmit = async () => {
     try {
        const res = await fetch(
-      `http://localhost:8080/api/auth/forgot-password?email=${encodeURIComponent(email)}`,
+      `https://boxing-app-management.onrender.com/api/auth/forgot-password?email=${encodeURIComponent(email)}`,
       {
         method: "POST"
       }
