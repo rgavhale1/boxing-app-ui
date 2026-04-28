@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 
 import Login from "./components/Login";
 import AdminDashboard from "./components/AdminDashboard";
-import ResetPasswordPage from "./components/ResetPasswordPage"; // 👈 import your reset component
+import ResetPasswordPage from "./components/ResetPasswordPage";
 
 import "./App.css";
 
@@ -39,11 +39,8 @@ function Layout() {
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminDashboard />} />
 
-        {/* 👇 new reset-password route */}
-        <Route
-          path="/reset-password"
-          element={<ResetPasswordWrapper />}
-        />
+        {/* 👇 reset-password route */}
+        <Route path="/reset-password" element={<ResetPasswordWrapper />} />
       </Routes>
     </>
   );
@@ -53,6 +50,12 @@ function Layout() {
 function ResetPasswordWrapper() {
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
+
+  // ✅ If no token, show a fallback message
+  if (!token) {
+    return <p>Reset link is missing or invalid.</p>;
+  }
+
   return <ResetPasswordPage token={token} />;
 }
 
