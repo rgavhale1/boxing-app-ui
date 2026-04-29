@@ -72,3 +72,9 @@
 .login-footer span:hover {
   text-decoration: underline;
 }
+.error-text {
+  color: #111;   /* dark black */
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+}

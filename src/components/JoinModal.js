@@ -8,8 +8,10 @@ const JoinModal = ({ close, program }) => {
     time: "",
     program: program || ""
   });
+
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     if (program) {
@@ -19,35 +21,60 @@ const JoinModal = ({ close, program }) => {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setErrorMessage("");
+  };
+
+  const validateForm = () => {
+    const mobileRegex = /^[0-9]{10}$/;
+    if (!mobileRegex.test(form.mobile)) {
+      setErrorMessage("✖ Please enter a valid 10-digit mobile number.");
+      return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(form.email)) {
+      setErrorMessage("✖ Please enter a valid email address.");
+      return false;
+    }
+
+    return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+
+    setErrorMessage("");
     setSuccess(false);
 
+    if (!validateForm()) return;
+
+    setLoading(true);
+
     try {
-      const response = await fetch("https://boxing-app-management.onrender.com/api/join", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(form)
-      });
+      const response = await fetch(
+        "https://boxing-app-management.onrender.com/api/join",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form)
+        }
+      );
 
       if (response.ok) {
+        setLoading(false);
         setSuccess(true);
+
         setTimeout(() => {
-          setLoading(false);
+          setSuccess(false);
           close();
-        }, 2000); // show success popup for 2 seconds
+        }, 2000);
       } else {
-        alert("Error submitting form: " + response.status);
+        setErrorMessage("✖ Error submitting form: " + response.status);
         setLoading(false);
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to connect to server");
+      setErrorMessage("⚠ Failed to connect to server");
       setLoading(false);
     }
   };
@@ -77,17 +104,19 @@ const JoinModal = ({ close, program }) => {
           </div>
         </form>
 
-        {/* Loading / Success Popup */}
-        {loading && (
-          <div className="popup-overlay">
-            <div className="popup-box">
-              {success ? (
-                <h3>✅ Registration Successful! We’ll contact you soon.</h3>
-              ) : (
-                <h3>⏳ Submitting your registration… Please wait.</h3>
-              )}
-            </div>
-          </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+        {/* ✅ FIXED POPUP (same UI, only logic fixed) */}
+        {(loading || success) && (
+         <div className="popup-overlay">
+  <div className="popup-box">
+    <h3 style={{ color: "white" }}>
+      {success
+        ? "✅ Registration Successful! We’ll contact you soon."
+        : "⏳ Submitting your registration… Please wait."}
+    </h3>
+  </div>
+</div>
         )}
       </div>
     </div>

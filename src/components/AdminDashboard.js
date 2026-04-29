@@ -28,7 +28,7 @@ const AdminDashboard = () => {
   const fetchUsers = async (pageNo = 0) => {
     const params = new URLSearchParams({
       page: pageNo,
-      size: 5,
+      size: 50,
       ...filters,
     });
 

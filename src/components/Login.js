@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ForgotPasswordModal from "./ForgotPasswordModal"; // import modal
+import ForgotPasswordModal from "./ForgotPasswordModal";
 import "./Login.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -23,11 +25,11 @@ const Login = () => {
         localStorage.setItem("token", token);
         navigate("/admin");
       } else {
-        alert("Invalid credentials");
+        setErrorMessage("Invalid credentials");
       }
     } catch (err) {
       console.error(err);
-      alert("Server error");
+      setErrorMessage("Server error");
     }
   };
 
@@ -40,22 +42,38 @@ const Login = () => {
         <input
           type="text"
           placeholder="Username"
-          onChange={(e) => setUsername(e.target.value)}
+          value={username}
+          onChange={(e) => {
+            setUsername(e.target.value);
+            setErrorMessage("");
+          }}
         />
 
         <input
           type="password"
           placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            setErrorMessage("");
+          }}
         />
 
         <button onClick={handleLogin}>Login</button>
+
+        {/* ✅ Error message below button */}
+        {errorMessage && (
+          <p className="error-text">{errorMessage}</p>
+        )}
 
         <div className="login-footer">
           <span onClick={() => setShowModal(true)}>Forgot Password?</span>
         </div>
       </div>
-      {showModal && <ForgotPasswordModal onClose={() => setShowModal(false)} />}
+
+      {showModal && (
+        <ForgotPasswordModal onClose={() => setShowModal(false)} />
+      )}
     </div>
   );
 };
