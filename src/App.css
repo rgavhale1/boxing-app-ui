@@ -387,7 +387,13 @@ body {
   align-items: center;
 
   z-index: 9999;
-  animation: fadeIn 0.25s ease;
+
+  /* ✅ IMPORTANT FIX */
+  pointer-events: auto;
+}
+
+.modal-overlay.hidden {
+  display: none;
 }
 
 .modal-box {
