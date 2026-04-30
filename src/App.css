@@ -90,18 +90,18 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 50vh;
   overflow: hidden;
+  background: black; /* fallback so blank doesn't show */
 }
 
 .hero-video {
   width: 100%;
-  height: 100%; /* 🔥 FIXED */
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
+
 .hero-video {
   width: 100%;
   height: 100vh;
@@ -564,8 +564,15 @@ body {
   }
 
   /* HERO */
-  .hero {
-    height: 50vh;
+
+   .hero {
+    height: 40vh;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .hero h1 {
