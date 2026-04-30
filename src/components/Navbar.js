@@ -8,14 +8,12 @@ const Navbar = () => {
 
   const goToSection = (id) => {
     if (location.pathname !== "/") {
-      // First go to home route
       navigate("/", { replace: false });
-      // Delay scroll until after navigation
+
       setTimeout(() => {
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     } else {
-      // Already on home, just scroll
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }
   };
@@ -32,6 +30,10 @@ const Navbar = () => {
             <li onClick={() => goToSection("home")}>Home</li>
             <li onClick={() => goToSection("about")}>About Us</li>
             <li onClick={() => goToSection("programs")}>Services</li>
+
+            {/* ✅ NO ACTION TABS */}
+            <li style={{ cursor: "default", opacity: 0.7 }}>Fight Store</li>
+            <li style={{ cursor: "default", opacity: 0.7 }}>Collaboration</li>
           </>
         )}
 
