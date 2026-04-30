@@ -6,7 +6,7 @@ const Footer = () => {
       
       <div>
         <h3>Contact Us</h3>
-        <p>Email: boxingavenue@gmail.com</p>
+        <p>Email: boxingavenueofficial@gmail.com</p>
         <p>Mobile: +91 9307065559</p>
       </div>
 
