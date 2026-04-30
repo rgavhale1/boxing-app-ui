@@ -95,12 +95,6 @@ body {
   background: black; /* fallback so blank doesn't show */
 }
 
-.hero-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 
 .hero-video {
   width: 100%;
