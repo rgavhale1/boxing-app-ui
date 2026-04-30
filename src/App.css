@@ -387,13 +387,7 @@ body {
   align-items: center;
 
   z-index: 9999;
-
-  /* ✅ IMPORTANT FIX */
-  pointer-events: auto;
-}
-
-.modal-overlay.hidden {
-  display: none;
+  animation: fadeIn 0.25s ease;
 }
 
 .modal-box {
@@ -618,4 +612,23 @@ body {
   .modal-box {
     width: 90%;
   }
+}
+
+.programs {
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  position: relative;
+  z-index: 2;
+
+  /* 🔥 CRITICAL FOR MOBILE CLICK ISSUES */
+  pointer-events: auto;
+}
+
+.card button {
+  position: relative;
+  z-index: 5;
+  pointer-events: auto;
 }
