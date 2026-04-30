@@ -95,11 +95,11 @@ body {
   background: black; /* fallback so blank doesn't show */
 }
 
-
 .hero-video {
   width: 100%;
   height: 100vh;
   object-fit: cover;
+  filter: brightness(1.6) contrast(1.1) saturate(1.2);
 }
 
 .hero-overlay {
