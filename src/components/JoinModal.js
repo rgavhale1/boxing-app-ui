@@ -110,7 +110,7 @@ const JoinModal = ({ close, program }) => {
         {(loading || success) && (
          <div className="popup-overlay">
   <div className="popup-box">
-    <h3 style={{ color: "white" }}>
+    <h3 style={{ color: "black" }}>
       {success
         ? "✅ Registration Successful! We’ll contact you soon."
         : "⏳ Submitting your registration… Please wait."}

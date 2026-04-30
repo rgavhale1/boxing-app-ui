@@ -118,7 +118,7 @@ const ForgotPasswordModal = ({ onClose }) => {
         {(loading || success) && (
           <div className="popup-overlay">
             <div className="popup-box">
-              <h3 style={{ color: "white" }}>
+              <h3 style={{ color: "black" }}>
                 {success
                   ? "✅ Reset link sent successfully!"
                   : "⏳ Sending reset link… Please wait."}

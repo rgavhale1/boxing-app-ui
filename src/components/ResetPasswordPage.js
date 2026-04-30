@@ -98,7 +98,7 @@ const ResetPasswordPage = ({ token }) => {
         {(loading || success) && (
           <div className="popup-overlay">
             <div className="popup-box">
-              <h3 style={{ color: "white" }}>
+              <h3 style={{ color: "black" }}>
                 {success
                   ? "✅ Password reset successful!"
                   : "⏳ Updating password… Please wait."}

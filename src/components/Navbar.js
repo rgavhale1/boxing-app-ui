@@ -32,7 +32,7 @@ const Navbar = () => {
             <li onClick={() => goToSection("programs")}>Services</li>
 
             {/* ✅ NO ACTION TABS */}
-            <li style={{ cursor: "default", opacity: 0.7 }}>Fight Store</li>
+            <li style={{ cursor: "default", opacity: 0.7 }}>FightStore</li>
             <li style={{ cursor: "default", opacity: 0.7 }}>Collaboration</li>
           </>
         )}
