@@ -1,0 +1,62 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:    #0a0a0a;
+  --dark:     #111111;
+  --darker:   #0d0d0d;
+  --grey:     #1a1a1a;
+  --grey2:    #222222;
+  --white:    #ffffff;
+  --off-white:#e8e8e8;
+  --muted:    #888888;
+  --yellow:   #f5c518;
+  --yellow-dim:#c9a010;
+  --red:      #cc1f1f;
+  --red-bright:#e02020;
+  --font-display:   'Bebas Neue', sans-serif;
+  --font-condensed: 'Barlow Condensed', sans-serif;
+  --font-body:      'Barlow', sans-serif;
+
+  /* ── Layout tokens ── */
+  --site-max:       1200px;
+  --site-px:        clamp(16px, 4vw, 48px);
+  --navbar-offset:  148px;
+}
+
+@media (max-width: 900px) {
+  :root { --navbar-offset: 88px; }
+}
+@media (max-width: 480px) {
+  :root { --navbar-offset: 74px; }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent text size adjustment on rotation */
+html { -webkit-text-size-adjust: 100%; }
+
+button { cursor: pointer; border: none; outline: none; font-family: var(--font-condensed); }
+a { text-decoration: none; color: inherit; }
+input, select, textarea { font-family: var(--font-body); }
+
+/* Better tap targets on mobile */
+button, a, [role="button"] { -webkit-tap-highlight-color: transparent; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--grey2); border-radius: 3px; }
+
+@keyframes fadeInUp  { from { opacity:0; transform:translateY(30px); }  to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn    { from { opacity:0; }                               to { opacity:1; } }
+@keyframes slideInLeft { from { opacity:0; transform:translateX(-40px); } to { opacity:1; transform:translateX(0); } }
+@keyframes pulse     { 0%,100% { box-shadow:0 0 0 0 rgba(245,197,24,0.4); } 50% { box-shadow:0 0 0 10px rgba(245,197,24,0); } }
+@keyframes spin      { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }

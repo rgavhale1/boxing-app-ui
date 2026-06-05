@@ -1,0 +1,136 @@
+.footer {
+  background-color: var(--black);
+  border-top: 1px solid var(--grey2);
+  padding: 48px var(--site-px) 32px;
+  margin-top: 40px;
+}
+
+.container {
+  max-width: var(--site-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Equal 4-column grid */
+.topSection {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.logoSection { display: flex; align-items: flex-start; gap: 12px; }
+
+.logoWrap {
+  width: 130px; height: 130px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.logoImage {
+  height: 100px; width: auto; object-fit: contain;
+  filter: brightness(1.45) contrast(1.12) saturate(1.05);
+}
+
+.contactSection,
+.addressSection,
+.socialSection {
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+.contactSection h3, .addressSection h3, .socialSection h3 {
+  font-family: var(--font-condensed);
+  font-size: 12px; letter-spacing: 2px;
+  color: var(--off-white); margin: 0;
+  text-transform: uppercase; font-weight: 700;
+}
+
+.contactSection p, .addressSection p {
+  margin: 0; font-family: var(--font-body);
+  font-size: 15px; color: var(--off-white); line-height: 1.6;
+  word-break: break-word;
+}
+
+.socialLinks { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.socialBtn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 50px; height: 50px; border-radius: 50%;
+  background: linear-gradient(135deg, #111 0%, rgba(255,255,255,0.03) 100%);
+  color: var(--white); box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  transition: transform 0.18s, box-shadow 0.18s, background 0.18s, color 0.18s;
+}
+.socialBtn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.55);
+}
+.socialBtn svg { display: block; }
+
+/* Instagram Styling */
+.instagram {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+  box-shadow: 0 6px 18px rgba(249, 115, 151, 0.35);
+}
+.instagram:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+  box-shadow: 0 10px 32px rgba(249, 115, 151, 0.55);
+  filter: brightness(1.1) saturate(1.2);
+}
+
+/* YouTube Styling */
+.youtube {
+  background: linear-gradient(135deg, #FF0000 0%, #DC0000 100%);
+  box-shadow: 0 6px 18px rgba(255, 0, 0, 0.35);
+}
+.youtube:hover {
+  background: linear-gradient(135deg, #FF3333 0%, #FF0000 100%);
+  box-shadow: 0 10px 32px rgba(255, 0, 0, 0.55);
+  filter: brightness(1.15) saturate(1.15);
+}
+
+/* WhatsApp Styling */
+.whatsapp {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+}
+.whatsapp:hover {
+  background: linear-gradient(135deg, #34AF60 0%, #25D366 100%);
+  box-shadow: 0 10px 32px rgba(37, 211, 102, 0.55);
+  filter: brightness(1.15) saturate(1.15);
+}
+
+.bottomSection {
+  text-align: center; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.copyright { margin: 0; font-size: 12px; color: var(--muted); }
+
+/* ── Tablet ── */
+@media (max-width: 900px) {
+  .footer { padding: 40px var(--site-px) 28px; }
+  .topSection { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .logoWrap { width: 110px; height: 110px; }
+  .logoImage { height: 86px; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .footer { padding: 36px var(--site-px) 24px; margin-top: 0; }
+  /* Single column — each section stacks */
+  .topSection {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .logoSection { align-items: center; justify-content: flex-start; }
+  .logoWrap { width: 90px; height: 90px; }
+  .logoImage { height: 70px; }
+  .contactSection p, .addressSection p { font-size: 14px; }
+  .contactSection h3, .addressSection h3, .socialSection h3 { font-size: 11px; }
+  .bottomSection { padding-top: 16px; }
+  .copyright { font-size: 11px; }
+}

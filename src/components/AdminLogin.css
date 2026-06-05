@@ -1,0 +1,144 @@
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #0f1121, #171c34);
+  padding: 40px 20px;
+}
+
+.login-box {
+  width: min(420px, 100%);
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.login-box h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  color: #1f2937;
+}
+
+.login-box p {
+  margin: 0 0 28px;
+  color: #6b7280;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: none;
+  background: #4338ca;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.login-box button:hover {
+  background: #3730a3;
+  transform: translateY(-1px);
+}
+
+.error-text {
+  margin-top: 14px;
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.login-footer {
+  margin-top: 18px;
+}
+
+.login-footer span {
+  color: #4338ca;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: min(420px, 100%);
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin: 0 0 10px;
+  color: #dc2626;
+  font-size: 24px;
+}
+
+.modal-content p {
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.send-btn {
+  background: #111827;
+  color: #fff;
+}
+
+.cancel-btn {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.close-modal {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
